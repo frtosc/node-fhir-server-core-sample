@@ -1,0 +1,14 @@
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/frtosc/sandbox.git",
+  "author": "Francesco Toscano",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@asymmetrik/node-fhir-server-core": "^2.0.5"
+  }
+}
