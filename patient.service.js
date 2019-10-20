@@ -1,18 +1,19 @@
 const { resolveSchema } = require('@asymmetrik/node-fhir-server-core');
 
-let getPatient = () => {
-    return require(resolveSchema('4_0_0', 'Patient'));
+let getPatient = (base_version) => {
+    return require(resolveSchema(base_version, 'Patient'));
 };
 
 module.exports.search = (args) => new Promise((resolve, reject) => {
     //throw new Error('Unable to locate patients');
-    let Patient = getPatient()
-    resolve([new Patient(p1), new Patient(p1), new Patient(p1)]);
+    let { base_version } = args;
+    let Patient = getPatient(base_version)
+    resolve([new Patient(p('id1')), new Patient(p('id2')), new Patient(p('id3'))]);
 });
 
-let p1 = {
+let p = (id) => ({
     "resourceType": "Patient",
-    "id": "example",
+    "id": id,
     "text": {
         "status": "generated",
         "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<table>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Name</td>\n\t\t\t\t\t\t<td>Peter James \n              <b>Chalmers</b> (&quot;Jim&quot;)\n            </td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Address</td>\n\t\t\t\t\t\t<td>534 Erewhon, Pleasantville, Vic, 3999</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Contacts</td>\n\t\t\t\t\t\t<td>Home: unknown. Work: (03) 5555 6473</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>Id</td>\n\t\t\t\t\t\t<td>MRN: 12345 (Acme Healthcare)</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>"
@@ -174,4 +175,4 @@ let p1 = {
     "managingOrganization": {
         "reference": "Organization/1"
     }
-}
+});
