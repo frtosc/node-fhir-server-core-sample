@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@asymmetrik/node-fhir-server-core": "^2.0.5",
-    "express": "^4.17.1",
-    "uuid": "^3.3.3"
+    "express": "^4.17.1"
   }
 }

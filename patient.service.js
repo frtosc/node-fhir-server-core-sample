@@ -3,14 +3,24 @@ const v4 = require('uuid/v4')
 
 const logger = loggers.get('default');
 const getPatient = (base_version) => require(resolveSchema(base_version, 'Patient'));
+const patientsDB = [];
 
 module.exports.search = (args) => new Promise((resolve, reject) => {
     logger.info('patient.search');
     //throw new Error('Unable to locate patients');
     const { base_version } = args;
     const Patient = getPatient(base_version)
-    resolve([new Patient(create(v4())), new Patient(create(v4())), new Patient(create(v4()))]);
+    resolve(getPatientsDB(Patient));
 });
+
+const getPatientsDB = (Patient) => {
+    if (patientsDB.length == 0) {
+        for (let i = 0; i < 20; i++) {
+            patientsDB.push(new Patient(create('patient-' + i)));
+        }
+    }
+    return patientsDB;
+}
 
 const create = (id) => ({
     "resourceType": "Patient",
