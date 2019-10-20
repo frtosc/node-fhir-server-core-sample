@@ -1,17 +1,18 @@
-const { resolveSchema } = require('@asymmetrik/node-fhir-server-core');
+const { resolveSchema, loggers } = require('@asymmetrik/node-fhir-server-core');
+const v4 = require('uuid/v4')
 
-let getPatient = (base_version) => {
-    return require(resolveSchema(base_version, 'Patient'));
-};
+const logger = loggers.get('default');
+const getPatient = (base_version) => require(resolveSchema(base_version, 'Patient'));
 
 module.exports.search = (args) => new Promise((resolve, reject) => {
+    logger.info('patient.search');
     //throw new Error('Unable to locate patients');
-    let { base_version } = args;
-    let Patient = getPatient(base_version)
-    resolve([new Patient(p('id1')), new Patient(p('id2')), new Patient(p('id3'))]);
+    const { base_version } = args;
+    const Patient = getPatient(base_version)
+    resolve([new Patient(create(v4())), new Patient(create(v4())), new Patient(create(v4()))]);
 });
 
-let p = (id) => ({
+const create = (id) => ({
     "resourceType": "Patient",
     "id": id,
     "text": {
