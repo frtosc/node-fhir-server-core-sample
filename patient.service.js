@@ -1,5 +1,4 @@
 const { resolveSchema, loggers } = require('@asymmetrik/node-fhir-server-core');
-const v4 = require('uuid/v4')
 
 const logger = loggers.get('default');
 const getPatient = (base_version) => require(resolveSchema(base_version, 'Patient'));
