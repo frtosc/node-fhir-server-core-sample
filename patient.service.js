@@ -6,23 +6,19 @@ const patientsDB = [];
 
 module.exports.search = (args) => new Promise((resolve, reject) => {
     logger.info('patient.search');
-    const { base_version } = args;
-    resolve(getPatientsDB(base_version));
+    const { base_version, _id } = args;
+    resolve(_id ? findById(base_version, _id) : findAll(base_version));
 });
 
 module.exports.searchById = (args) => new Promise((resolve, reject) => {
     logger.info('patient.searcById');
-
     let { base_version, id } = args;
-    let found = getPatientsDB(base_version).find((p) => p.id == id);
-    if (found) {
-        resolve(found);
-    } else {
-        reject(new Error('Patient id' + id + " not found"));
-    }
+    resolve(findById(base_version, id));
 });
 
-const getPatientsDB = (base_version) => {
+const findById = (base_version, id) => findAll(base_version).find((p) => p.id == id);
+
+const findAll = (base_version) => {
     if (patientsDB.length == 0) {
         const Patient = getPatient(base_version)
         for (let i = 0; i < 20; i++) {
