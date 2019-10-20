@@ -6,14 +6,25 @@ const patientsDB = [];
 
 module.exports.search = (args) => new Promise((resolve, reject) => {
     logger.info('patient.search');
-    //throw new Error('Unable to locate patients');
     const { base_version } = args;
-    const Patient = getPatient(base_version)
-    resolve(getPatientsDB(Patient));
+    resolve(getPatientsDB(base_version));
 });
 
-const getPatientsDB = (Patient) => {
+module.exports.searchById = (args) => new Promise((resolve, reject) => {
+    logger.info('patient.searcById');
+
+    let { base_version, id } = args;
+    let found = getPatientsDB(base_version).find((p) => p.id == id);
+    if (found) {
+        resolve(found);
+    } else {
+        reject(new Error('Patient id' + id + " not found"));
+    }
+});
+
+const getPatientsDB = (base_version) => {
     if (patientsDB.length == 0) {
+        const Patient = getPatient(base_version)
         for (let i = 0; i < 20; i++) {
             patientsDB.push(new Patient(create('patient-' + i)));
         }
