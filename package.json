@@ -9,7 +9,6 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@asymmetrik/node-fhir-server-core": "^2.0.5",
-    "express": "^4.17.1"
+    "@asymmetrik/node-fhir-server-core": "^2.0.5"
   }
 }

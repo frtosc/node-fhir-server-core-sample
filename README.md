@@ -1,6 +1,8 @@
-# sandbox
-sperimentazione della libreria node-fhir-server-core
+Sandbox
+=======
+sperimentazione della libreria `@asymmetrik/node-fhir-server-core`
 
-# todo
+## Todo list
 - npm al posto di yarn
-- implementazione di un server ibrido feather.js con node-fhir-server-core
+- implementazione di un server ibrido [feather.js](https://feathersjs.com/) con `@asymmetrik/node-fhir-server-core`
+
