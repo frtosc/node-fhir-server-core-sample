@@ -29,7 +29,7 @@ const create = (base_version, id) => {
     e.id = 'encounter-' + id;
     e.status = 'finished';
     e.class = {system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode', code: 'AMB', display: 'ambulatory'};
-    e.subject = {reference: 'Patient/patient-5', display: 'Personcina Malatina'};
+    e.subject = {reference: 'Patient/patient-' + id, display: 'Personcina Malatina'};
     e.participant = [
         {individual: {reference: 'Practitioner/xpln-123456', display: 'Prof. Dr. med. Medicone Professorone'}},
         {individual: {reference: 'Practitioner/xpln-789012', display: 'Infermierino Inoino'}}
