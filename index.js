@@ -5,7 +5,8 @@ let config = {
 	profiles: {
 		patient: { service: './services/patient.service.js', versions: [VERSIONS['4_0_0']] },
 		encounter: { service: './services/encounter.service.js', versions: [VERSIONS['4_0_0']] },
-		bundle: { service: './services/bundle.service.js', versions: [VERSIONS['4_0_0']] }
+		bundle: { service: './services/bundle.service.js', versions: [VERSIONS['4_0_0']] },
+		structureDefinition: { service: './services/structure-definition.service.js', versions: [VERSIONS['4_0_0']] }
 	}
 };
 let server = initialize(config);

@@ -14,6 +14,8 @@ sperimentazione della libreria `@asymmetrik/node-fhir-server-core`
 - Documents
   - http://localhost:3000/4_0_0/Bundle?_type=document
   - http://localhost:3000/4_0_0/Bundle?_id=document-10
+- StructureDefinition
+  - http://localhost:3000/4_0_0/StructureDefinition
 
 ## Todo list
 - esposizione Encounters
