@@ -6,7 +6,7 @@
   "author": "Francesco Toscano",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "@asymmetrik/node-fhir-server-core": "^2.0.5"
