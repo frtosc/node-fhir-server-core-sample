@@ -1,4 +1,4 @@
-Sandbox
+FHIR API Server Sample
 =======
 sperimentazione della libreria `@asymmetrik/node-fhir-server-core`
 
