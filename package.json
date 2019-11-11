@@ -10,5 +10,8 @@
   },
   "dependencies": {
     "@asymmetrik/node-fhir-server-core": "^2.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }
