@@ -9,7 +9,9 @@
     "start": "nodemon index.js"
   },
   "dependencies": {
-    "@asymmetrik/node-fhir-server-core": "^2.0.6"
+    "@asymmetrik/node-fhir-server-core": "^2.0.6",
+    "@feathersjs/express": "^4.3.11",
+    "@feathersjs/feathers": "^4.3.11"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"

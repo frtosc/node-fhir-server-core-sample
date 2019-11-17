@@ -18,6 +18,4 @@ sperimentazione della libreria `@asymmetrik/node-fhir-server-core`
   - http://localhost:3000/4_0_0/StructureDefinition
 
 ## Todo list
-- esposizione Encounters
-- esposizione Documenti
-- implementazione di un server ibrido [feather.js](https://feathersjs.com/) con `@asymmetrik/node-fhir-server-core`
+- routing /fhir --> /4_0_0
