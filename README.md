@@ -3,6 +3,7 @@ FHIR API Server Sample
 sperimentazione della libreria `@asymmetrik/node-fhir-server-core`
 
 ## Esempi chiamate
+- Feathers: http://localhost:3000/feathers?parametro=abcd
 - Metadata: http://localhost:3000/4_0_0/metadata
 - Patients 
   - http://localhost:3000/4_0_0/Patient

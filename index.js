@@ -10,10 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.configure(express.rest());
 app.use(express.errorHandler());
-app.use('/servizio', {
+app.use('/feathers', {
 	async find(params) {
-		logger.info('servizio ', params.query);
-		return params.query;
+		logger.info('feathers ', params.query);
+		return params;
 	}
 });
 
