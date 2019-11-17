@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.configure(express.rest());
 app.use(express.errorHandler());
-app.use('/feathers/*', {
+app.use('/feathers', {
 	async find(params) {
 		logger.info('feathers ', params.query);
 		return params;
