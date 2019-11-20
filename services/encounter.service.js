@@ -4,12 +4,15 @@ const encounterDB = [];
 let Encounter = undefined;
 
 module.exports.search = (args) => new Promise((resolve, reject) => {
-    logger.info('encounter.search');
-    const { base_version, _id } = args;
-    resolve(_id ? findById(base_version, _id) : findAll(base_version));
-});
+    logger.info('encounter.search', args);
+    const { base_version, _id, subject} = args;
+    
+    const result = findAll(base_version)
+        .filter(p => !_id || p.id == _id)
+        .filter(p => !subject || p.subject.reference == subject || p.subject.id == subject);
 
-const findById = (base_version, id) => findAll(base_version).find((p) => p.id == id);
+    result.length == 0 ? resolve() : resolve(result);
+});
 
 const findAll = (base_version) => {
     if (encounterDB.length == 0) {
@@ -29,7 +32,7 @@ const create = (base_version, id) => {
     e.id = 'encounter-' + id;
     e.status = 'finished';
     e.class = {system: 'http://terminology.hl7.org/CodeSystem/v3-ActCode', code: 'AMB', display: 'ambulatory'};
-    e.subject = {reference: 'Patient/patient-' + id, display: 'Personcina Malatina'};
+    e.subject = {reference: 'Patient/patient-' + id, id: 'patient-' + id, display: 'Personcina Malatina'};
     e.participant = [
         {individual: {reference: 'Practitioner/xpln-123456', display: 'Prof. Dr. med. Medicone Professorone'}},
         {individual: {reference: 'Practitioner/xpln-789012', display: 'Infermierino Inoino'}}
