@@ -16,12 +16,9 @@ app.use('/feathers', {
 		return params;
 	}
 });
-app.use('/fhir/*', {
-	async find(params) {
-		logger.info(params);
-		return 'ciao';
-	}
-})
+app.get('/fhir/*', (req, res) => {
+	res.redirect(req.path.substr(5))
+});
 
 const config = {
 	profiles: {

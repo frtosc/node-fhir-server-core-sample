@@ -1,0 +1,4 @@
+GET http://localhost:3000/fhir/4_0_0/Patient HTTP/1.1
+content-type: application/json
+
+{}
