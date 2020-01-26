@@ -21,15 +21,13 @@ const findAll = base_version => {
     ));
   }
   if (structureDefinitionDB.length == 0) {
-    structureDefinitionDB.push(
-      createEncounterStructureDefinition(base_version)
-    );
-    structureDefinitionDB.push(createPatientStructireDefinition(base_version));
+    structureDefinitionDB.push(createEncounterSD());
+    structureDefinitionDB.push(createPatientSD());
   }
   return structureDefinitionDB;
 };
 
-const createPatientStructireDefinition = base_version => {
+const createPatientSD = () => {
   const s = new StructureDefinition();
   s.id = "Patient";
   s.fhirVersion = "4.0.0";
@@ -71,7 +69,7 @@ const createPatientStructireDefinition = base_version => {
   return s;
 };
 
-const createEncounterStructureDefinition = base_version => {
+const createEncounterSD = () => {
   const s = new StructureDefinition();
   s.id = "Encounter";
   s.fhirVersion = "4.0.0";
@@ -154,7 +152,7 @@ const createEncounterStructureDefinition = base_version => {
           ],
           strength: "required",
           description: "Current state of the encounter.",
-          valueSet: "http://hl7.org/fhir/ValueSet/encounter-status|4.0.1"
+          valueSet: "http://hl7.org/fhir/ValueSet/encounter-status|4.0.0"
         }
       }
     ]
