@@ -14,22 +14,64 @@ const findById = (base_version, id) =>
   findAll(base_version).find(p => p.id == id);
 
 const findAll = base_version => {
-  if (structureDefinitionDB.length == 0) {
-    structureDefinitionDB.push(
-      createEncounterStructureDefinition(base_version)
-    );
-  }
-  return structureDefinitionDB;
-};
-
-const createEncounterStructureDefinition = base_version => {
   if (StructureDefinition === undefined) {
     StructureDefinition = require(resolveSchema(
       base_version,
       "StructureDefinition"
     ));
   }
+  if (structureDefinitionDB.length == 0) {
+    structureDefinitionDB.push(
+      createEncounterStructureDefinition(base_version)
+    );
+    structureDefinitionDB.push(createPatientStructireDefinition(base_version));
+  }
+  return structureDefinitionDB;
+};
 
+const createPatientStructireDefinition = base_version => {
+  const s = new StructureDefinition();
+  s.id = "Patient";
+  s.fhirVersion = "4.0.0";
+  s.version = "4.0.0";
+  s.type = "Patient";
+  s.text = { status: "generated", div: "<div><div>" };
+  s.kind = "resource";
+  s.contact = [
+    { name: "Team Leit\nSviluppo e Integrazione\nEnte Ospedaliero Cantonale" }
+  ];
+  s.publisher = "Ente Ospedaliero Cantonale";
+  s.baseDefinition = "http://hl7.org/fhir/StructureDefinition/Patient";
+  s.derivation = "specialization";
+  s.status = "draft";
+  s.abstract = false;
+  s.description = "Un paziente";
+  s.meta = { lastUpdated: "2020-01-26T12:50:00Z" };
+  s.snapshot = {
+    element: [
+      {
+        id: "Patient",
+        path: "Patient",
+        short: "Un paziente",
+        definition: "Un Paziente",
+        min: 0,
+        max: "*",
+        isModifier: false,
+        isSummary: false
+      },
+      {
+        id: "Patient.id",
+        path: "Patient.id",
+        min: 1,
+        max: "1"
+      }
+    ]
+  };
+
+  return s;
+};
+
+const createEncounterStructureDefinition = base_version => {
   const s = new StructureDefinition();
   s.id = "Encounter";
   s.fhirVersion = "4.0.0";
