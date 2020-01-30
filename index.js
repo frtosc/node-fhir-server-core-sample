@@ -22,10 +22,10 @@ app.get('/fhir/*', (req, res) => {
 
 const config = {
 	profiles: {
-		patient: { service: './services/patient.service.js', versions: [VERSIONS['4_0_0']] },
-		encounter: { service: './services/encounter.service.js', versions: [VERSIONS['4_0_0']] },
-		bundle: { service: './services/bundle.service.js', versions: [VERSIONS['4_0_0']] },
-		structureDefinition: { service: './services/structure-definition.service.js', versions: [VERSIONS['4_0_0']] }
+		patient: { service: './fhir-services/patient.service.js', versions: [VERSIONS['4_0_0']] },
+		encounter: { service: './fhir-services/encounter.service.js', versions: [VERSIONS['4_0_0']] },
+		bundle: { service: './fhir-services/bundle.service.js', versions: [VERSIONS['4_0_0']] },
+		structureDefinition: { service: './fhir-services/structure-definition.service.js', versions: [VERSIONS['4_0_0']] }
 	}
 };
 
