@@ -1,9 +1,9 @@
-FHIR API Server Sample
+FHIR API Server Example
 =======
-sperimentazione della libreria `@asymmetrik/node-fhir-server-core`
+learning by doing a FHIR API server with `@asymmetrik/node-fhir-server-core`
 
-## Esempi chiamate
-- Feathers: http://localhost:3000/feathers?parametro=abcd
+## Call examples
+- Simple Express service: http://localhost:3000/lista-neoc
 - Metadata: http://localhost:3000/fhir/4_0_0/metadata
 - Patients 
   - http://localhost:3000/fhir/4_0_0/Patient
@@ -19,4 +19,10 @@ sperimentazione della libreria `@asymmetrik/node-fhir-server-core`
   - http://localhost:3000/fhir/4_0_0/StructureDefinition
 
 ## Todo list
-
+- Operatrions
+  - http://localhost:3000/fhir/4_0_0/Patient/[id]/$everything
+    - see https://github.com/Asymmetrik/node-fhir-server-core/blob/master/docs/CustomOperations.md
+- Modify CapabilityStatement
+  - see https://github.com/Asymmetrik/node-fhir-server-core/blob/master/docs/CustomCapability.md
+- Generate Documentation
+  - see https://confluence.hl7.org/display/FHIR/IG+Publisher+Documentation
